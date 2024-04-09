@@ -16,7 +16,9 @@ pip3 install flask
 ```
 pip install flask
 ```
+
 <code>cd backend<code>
+
 run :
 ```
 flask --app main run
