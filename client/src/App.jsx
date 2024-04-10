@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from "react"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './HomePage/Home';
 
 
 function App() {
@@ -8,7 +8,12 @@ function App() {
 
   return (
     <>
-      <p>Welcome to Music Reccomendation System</p>
+      <Router>
+        <Routes>
+            <Route index element={<Home />}/>
+            <Route path="/Home" element={<Home />}/>
+        </Routes>
+      </Router>
     </>
   )
 }
