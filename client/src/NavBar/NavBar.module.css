@@ -1,0 +1,38 @@
+.NavBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    background-color: #060E19;
+    color: white;
+
+}
+
+
+.NavHeadline{
+    font-weight: bold;
+    font-family:Newsreader; 
+    font-size:2.0em;
+}
+.NavBar > ul > li{
+    display: inline;
+    padding: 10px;
+    font-family:inter;
+    
+}
+
+.Links{
+    text-decoration: none;
+    color:white;
+}
+
+.LoginLink{
+    color: black;
+    text-decoration: none;
+    border:2px solid #1ED760;
+    background-color:#1ED760;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+
+}
