@@ -10,7 +10,7 @@ function Home(){
             <NavBar />
             <div className={styles.HomeContainer}>
                 <h1 className={styles.HomeHeadline}>Discover Your Perfect Tune with MelodyMatch: Your Personalized Music Recommendation Platform!</h1>
-                <Link to="/login" className={styles.button}>Get Started</Link>
+                <Link to="/Chatbot" className={styles.button}>Get Started</Link>
             </div>
             <img className={styles.NeuralImage} src={neuralnetwork}></img>
         </>
