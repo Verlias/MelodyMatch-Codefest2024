@@ -22,8 +22,14 @@
     background-color: #171717;
     color: white;
     height: 100%;
-    width: 20%;
-    
+    width: 20%;   
+}
+
+.ChatHeadline{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #171717;
 }
 
 .title{
@@ -33,6 +39,7 @@
     color: white;
     font-weight: lighter;
     font-family: newsreader;
+    background-color: #212121;
 }
 
 .Headline {
@@ -40,7 +47,6 @@
     margin-top: 5%;
     align-items: center;
     justify-content: center;
-    background-color: #171717;
 
 }
 

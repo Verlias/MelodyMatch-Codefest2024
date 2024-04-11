@@ -5,6 +5,7 @@ function ChatPage(){
     return (
         <div className={styles.chatPageContainer}>
             <div className={styles.chatHistory}>
+                <h1 className={styles.ChatHeadline}>Chat History</h1>
                 <button className={styles.profileButton}>Profile</button>
             </div>
             <div className={styles.chatBoxContainer}>
