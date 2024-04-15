@@ -38,8 +38,20 @@
 
 .GitHubLink{
     background-color:#1ED760;
-    color:#1ED760;
+    color:black;
+    text-decoration: none;
 }
+
+.GitHubLink > a{
+    text-decoration: none;
+    background-color:#1ED760;
+}
+
+.GitHubLink > a > svg{
+    text-decoration: none;
+    background-color:#1ED760;
+}
+
 
 
 .ScikitLogo{
