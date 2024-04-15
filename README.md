@@ -22,5 +22,5 @@ pip install flask
 cd backend
 ```
 ```
-flask --app hello run
+python3 {whichever file needs to be ran}
 ```
