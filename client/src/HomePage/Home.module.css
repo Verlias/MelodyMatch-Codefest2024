@@ -5,6 +5,9 @@
     background-color: #060E19;
 }
 
+body{
+    overflow-y: hidden;
+}
 .HomeContainer{
     color:white;
     margin:auto;
