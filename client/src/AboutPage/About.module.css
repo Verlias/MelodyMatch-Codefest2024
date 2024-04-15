@@ -1,0 +1,49 @@
+.AboutSection{
+    width:1500px;
+    margin:auto;
+    margin-top:75px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    color:white;
+    
+}
+
+.AboutHeadLine{
+    font-size:45px;
+    font-family:Newsreader;
+}
+
+.LineBreak{
+    border:1px solid #E6E6E6;
+    width:100%;
+}
+
+
+.AboutContent{
+    margin-top:10px;
+    border:2px solid black;
+    border-radius: 10px;
+    background-color:#1ED760;
+    padding:15px;
+    font-size:22px;
+    font-family:inter;
+}
+
+.AboutP{
+    background-color:#1ED760;
+    color:black;
+    padding:10px 0px 10px 0px; 
+}
+
+.GitHubLink{
+    background-color:#1ED760;
+    color:black;
+}
+
+
+.ScikitLogo{
+    background-color:#1ED760;
+    width:500px;
+    margin-right:auto;
+}
