@@ -1,7 +1,5 @@
 # MusicRecommendationGPT
 
-# I love eliazar not logan -_-
-
 ## Dependencies for React Frontend
 <code> cd client </code>
 
