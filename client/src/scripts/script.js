@@ -1,12 +1,11 @@
 // Define the Point class
 class Point {
     constructor(position, row) {
-        this.position = position;   // Tuple
-        this.origin = position[1]   // Float
-        this.right = null;          // Point object
-        this.front = null;          // Point object
-        this.back = null;           // Point object
-        this.row = row;             // Integer (row number)
+        this.position = position;
+        this.origin = position[1] + (Math.random()-.5) * 50;
+        this.left = null;
+        this.back = null;
+        this.row = row;
         this.randomoffset = Math.random() * 10;
         if (Math.random() > 0.5) {
             this.shiftdirection = 1;
@@ -23,12 +22,8 @@ class Point {
         return this.position[1];
     }
 
-    get hasright() {
-        return this.right !== null;
-    }
-
-    get hasfront() {
-        return this.front !== null;
+    get hasleft() {
+        return this.left !== null;
     }
 
     get hasback() {
@@ -37,12 +32,8 @@ class Point {
 
     // Setters
 
-    setRight(right) {
-        this.right = right;
-    }
-
-    setFront(front) {
-        this.front = front;
+    setLeft(left) {
+        this.left = left;
     }
 
     setBack(back) {
@@ -73,11 +64,8 @@ class Point {
 
     // Drawing methods
     drawConnections(ctx) {
-        if (this.hasright) {
-            this.drawLine(ctx, this.right);
-        }
-        if (this.hasfront) {
-            this.drawLine(ctx, this.front);
+        if (this.hasleft) {
+            this.drawLine(ctx, this.left);
         }
         if (this.hasback) {
             this.drawLine(ctx, this.back);
@@ -88,7 +76,7 @@ class Point {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(pointTo.x, pointTo.y);
-        ctx.strokeStyle = 'white';
+        ctx.strokeStyle = '#4d6773';
         ctx.lineWidth = 2;
         ctx.stroke();
         ctx.closePath();
@@ -97,7 +85,7 @@ class Point {
     drawCircle(ctx) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, 3, 0, 2 * Math.PI);
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = '#bfedf7';
         ctx.fill();
         ctx.closePath()
     }
@@ -129,59 +117,49 @@ const numPoints = Math.floor(canvas.width / 50) + 1;
 // Y-axis for main line
 const mainlineY = canvas.height * 0.75;
 
+// Y-offset in between rows
+const rowdeltaY = 25
+
 // Y-axis restrictions for main line 
 const bound = canvas.height * 1 / 5
 const topbound = mainlineY - bound;
 const bottombound = mainlineY + bound;
 
-points0 = createRow(null, 0);
-pointsf1 = createRow(points0, 1);
-pointsf2 = createRow(pointsf1, 2);
-pointsf3 = createRow(pointsf2, 3);
-pointsf4 = createRow(pointsf3, 4);
-pointsf5 = createRow(pointsf4, 5);
-pointsf6 = createRow(pointsf5, 6);
-pointsf7 = createRow(pointsf6, 7);
-pointsb1 = createRow(points0, -1);
-pointsb2 = createRow(pointsb1, -2);
-pointsb3 = createRow(pointsb2, -3);
-pointsb4 = createRow(pointsb3, -4);
-pointsb5 = createRow(pointsb4, -5);
-pointsb6 = createRow(pointsb5, -6);
-pointsb7 = createRow(pointsb6, -7);
+halfrowcount = Math.floor((((bound) * 2) / rowdeltaY) / 2);
+additionalrows = Math.floor((canvas.height - bottombound) / rowdeltaY) + 2;
 
-setMainConnections(points0, pointsf1, pointsb1);
+allpoints = createRow(null, -halfrowcount, halfrowcount, additionalrows);
 
-function createRow(previous, rownum) {
-    var points = [];
 
-    // Create points and set their positions
-    for (let i = -4; i < numPoints + 4; i++) {
-        points.push(new Point([(i * (canvas.width / (numPoints - 1)))+(rownum*25), mainlineY + (rownum*25)], rownum));
-    }
+function createRow(previous, rownum, count, additional) {
+    if (rownum <= count + additional) {
+        var rows = [];
+        points = [];
 
-    // Set left and right connections for points to form a line
-    for (let i = 0; i < points.length - 1; i++) {
-        points[i].setRight(points[i + 1]);
-        if (previous != null) {
-            if (rownum < 0) {
+
+        slope = 3
+        len = numPoints + count * 2 + additional
+        // Create points and set their positions
+        for (let i = 0; i < (len); i++) {
+            x = ((i-count) * (canvas.width / (numPoints - 1))) + (rownum * rowdeltaY);
+            y = mainlineY + (rownum * rowdeltaY) + ((len-i) * slope);
+            points.push(new Point([x, y], rownum));
+            if (i > 0) {
+                points[i].setLeft(points[i - 1])
+            }
+            if (rownum != -count) {
                 points[i].setBack(previous[i])
             }
-            else {
-                points[i].setFront(previous[i])
-            }
+            
+
         }
-    }
 
-    return points
-}
-
-function setMainConnections(mainline, f1, b1) {
-    for (let i = 0; i < mainline.length - 1; i++) {
-        mainline[i].setBack(b1[i]);
-        //mainline[i].setFront(f1[i]);
+        rows = rows.concat(points);
+        return rows.concat(createRow(points, rownum += 1, count, additional));
     }
 }
+
+
 
 // ---------------------------------------------------------------------- //
 // ---------------------------------------------------------------------- //
@@ -210,113 +188,14 @@ function draw() {
         mousePos.y = bottombound;
     }
 
-    points0.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-
-    pointsf1.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y + 25, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsf2.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y + 50, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsf3.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y + 75, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsf4.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y + 100, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsf5.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y + 125, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsf6.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y + 150, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsf7.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y + 175, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-
-
-    pointsb1.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y - 25, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsb2.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y - 50, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsb3.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y - 75, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsb4.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y - 100, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsb5.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y - 125, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsb6.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y - 150, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
-    });
-    pointsb7.forEach(point => {
-        point.drawPoint(ctx);
-        point.updatePosition(mousePos.x, mousePos.y - 175, canvas.width)
-        if (frame % 5 == 0) {
-            point.shift()
-        }
+    allpoints.forEach(point => {
+        if (point != null) {
+            point.drawPoint(ctx);
+            point.updatePosition(mousePos.x, mousePos.y, canvas.width)
+            if (frame % 5 == 0) {
+                point.shift()
+            }
+        } 
     });
 
     frame += 1
