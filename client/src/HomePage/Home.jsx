@@ -1,5 +1,5 @@
 import React from "react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import NavBar from "../NavBar/NavBar.jsx";
 import styles from "./Home.module.css";
@@ -8,7 +8,7 @@ import styles from "./Home.module.css";
 function Home(){
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = "src/scripts/mapscript.js";
+        script.src = "src/scripts/script.js";
         script.async = true;
         document.body.appendChild(script);
         return () => {
@@ -23,7 +23,7 @@ function Home(){
                 <h1 className={styles.HomeHeadline}>Discover Your Perfect Tune with MelodyMatch: Your Personalized Music Recommendation Platform!</h1>
                 <Link to="/Chatbot" className={styles.button}>Get Started</Link>
             </div>
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas" style={{ position: "absolute", left: 0, top: 0, zIndex: -1 }}></canvas>
         </>
     )
 };
