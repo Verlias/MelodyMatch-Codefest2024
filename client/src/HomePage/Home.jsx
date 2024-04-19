@@ -23,7 +23,7 @@ function Home(){
                 <h1 className={styles.HomeHeadline}>Discover Your Perfect Tune with MelodyMatch: Your Personalized Music Recommendation Platform!</h1>
                 <Link to="/Chatbot" className={styles.button}>Get Started</Link>
             </div>
-            <img className={styles.NeuralImage} src={neuralnetwork}></img>
+            <canvas id="canvas"></canvas>
         </>
     )
 };
