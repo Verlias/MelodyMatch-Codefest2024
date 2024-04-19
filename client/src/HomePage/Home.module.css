@@ -2,11 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #060E19;
+    
 }
 
 body{
     overflow-y: hidden;
+    background-color: #060E19;
 }
 .HomeContainer{
     color:white;
@@ -19,6 +20,7 @@ body{
     justify-content: center;
     width:800px;
     font-size: 1.4em;
+    
 
 }
 
