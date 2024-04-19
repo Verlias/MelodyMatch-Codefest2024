@@ -1,48 +1,46 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-body{
+body {
     overflow-y: hidden;
     background-color: #060E19;
 }
-.HomeContainer{
-    color:white;
-    margin:auto;
+
+.HomeContainer {
+    color: white;
+    margin: auto;
     text-align: center;
-    margin-top:100px;
-    display:flex;
+    margin-top: 100px;
+    display: flex;
     flex-direction: column;
-    align-items:center;
-    justify-content: center;
-    width:800px;
-    font-size: 1.4em;
-    
-
-}
-
-
-.button{
-    margin-top:10px;
-    border:2px solid #1ED760;
-    background-color: #1ED760;
-    color:black;
-    padding:5px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight:bold;
-}
-
-.NeuralImage{
-    display:flex;
     align-items: center;
     justify-content: center;
-    margin:auto;
+    width: 800px;
+    font-size: 1.4em;
+}
+
+
+.button {
+    margin-top: 10px;
+    border: 2px solid #1ED760;
+    background-color: #1ED760;
+    color: black;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.NeuralImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
     margin-top: 150px;
-    width:99.99%;
+    width: 99.99%;
     position: absolute;
     top: 0;
     left: 0;
