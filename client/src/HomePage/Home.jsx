@@ -1,9 +1,9 @@
 import React from "react";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import NavBar from "../NavBar/NavBar.jsx";
 import styles from "./Home.module.css";
-import neuralnetwork from "../assets/neural.png";
+//import neuralnetwork from "../assets/neural.png";
 
 function Home(){
     useEffect(() => {
