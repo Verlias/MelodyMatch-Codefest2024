@@ -43,9 +43,9 @@ def find_similar_tracks(seed_track_id, num_tracks=50, k=10):
     similar_tracks = [(candidate_track_names[i], candidate_track_ids[i]) for i in indices[0] if candidate_track_ids[i] != seed_track_id]
     return similar_tracks
 
-
-seed_track_id = '5JEx7HbmvHQQswJCsoo9rA' #Close To Me by Ellie Goulding
-similar_tracks = find_similar_tracks(seed_track_id)
-print("Similar tracks:")
-for track_name, track_id in similar_tracks:
-    print(f"{track_name} - Track ID: {track_id}")
+if __name__ == "__main__":
+    seed_track_id = '5JEx7HbmvHQQswJCsoo9rA' #Close To Me by Ellie Goulding
+    similar_tracks = find_similar_tracks(seed_track_id)
+    print("Similar tracks:")
+    for track_name, track_id in similar_tracks:
+        print(f"{track_name} - Track ID: {track_id}")
