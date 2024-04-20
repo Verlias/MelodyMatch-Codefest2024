@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './chatpage.module.css';
 
 function ChatPage() {
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "src/scripts/notescript.js";
+        script.async = true;
+        document.body.appendChild(script);
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
+
   const [activeButton, setActiveButton] = useState('CombinedAlgo');
 
   const handleButtonClick = (buttonName) => {
@@ -28,7 +38,8 @@ function ChatPage() {
   };
 
   return (
-    <>
+      <>
+          <canvas id="canvas" style={{ position: "absolute", left: "50%", top: "25%", transform: "translate(-50%, 0)", zIndex: 999 }}></canvas>
       <section className={styles.ChatbotSection}>
         <div className={styles.HeadlineSection}>
           <h1 className={styles.ChatHeadline}>Melody Match</h1>

@@ -19,7 +19,7 @@ class MusicNote {
         var hoff = -3;
         ctx.beginPath();
         ctx.arc(this.x+(hdis*Math.cos(this.angle))+(hoff*Math.sin(this.angle)), this.y+(hdis*Math.sin(this.angle))+(hoff*Math.cos(this.angle)), 5, 0, Math.PI * 2);
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'white';
         ctx.fill();
 
         // Draw the stem
@@ -28,7 +28,7 @@ class MusicNote {
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x + (slen*Math.cos(this.angle)), this.y+(slen*Math.sin(this.angle)));
         ctx.lineWidth = 3;
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = 'white';
         ctx.stroke();
 
         // Draw the flag
@@ -39,7 +39,7 @@ class MusicNote {
         ctx.moveTo(this.x + (foff*Math.cos(this.angle)), this.y + (foff*Math.sin(this.angle)));
         ctx.lineTo(this.x + (flenx * Math.cos(this.angle)) + (fleny * Math.cos(this.angle)), this.y + (flenx * Math.sin(this.angle)) + (flenx * Math.sin(this.angle)));
         ctx.lineWidth = 3;
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = 'white';
         ctx.stroke();
     }
 
@@ -59,14 +59,14 @@ class MusicNote {
     }
 }
 
-const canvas = document.getElementById('myCanvas');
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 var musicnotes = [];
 
 for (let i = 1; i <= 8; i++) {
     var angle = (2 * Math.PI/8) * i
-    musicnotes.push(new MusicNote([100, 100], angle));
+    musicnotes.push(new MusicNote([canvas.width/2, canvas.height/2], angle));
 }
 
 document.addEventListener('keydown', function (event) {
