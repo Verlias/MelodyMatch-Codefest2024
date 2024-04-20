@@ -1,36 +1,60 @@
-
-
-
-
-.ptag{
-    color:white;
+.profileBackground {
+    width: 1500px;
+    margin: auto;
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    position: relative; 
+    background-color: #060E19;
+    height: 100vh;
 }
 
 .profileBackground {
-    color: #060E19
+    height: 20vh; 
+    width: 100%;
+    background-image: url('../assets/bladee333.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-.nameColor {
-    color: white
-}
+.profile-picture-container {
+    position: relative;
+    margin-top: -10vh; 
+    z-index: 1;
+  }
+  
+  .profile-picture {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+  }
+  
+  .follow-button {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px; 
+  }
+  
+  .user-info-box,
+  .account-info-box {
+    width: 45%;
+    padding: 20px;
+    border: 1px solid white;
+  }
+  
+  .user-info-box h2,
+  .account-info-box h2 {
+    border-bottom: 1px solid white;
+    padding-bottom: 10px;
+  }
 
-.profilePicture {
-    borderRadius: "50%";
-    width: 50; 
-    height: 50; 
-    backgroundColor: "insert picture file, #060E19";
-    display: "block"; 
-}
-
-.backgroundPicture {
-
-}
-
-.Follow {
-
-}
-
-.h1tag {
-    color: white; 
-}
 
