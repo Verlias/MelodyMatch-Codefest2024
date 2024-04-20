@@ -9,9 +9,16 @@ def submit():
     data = request.json
     input_text = data.get('input')
     button_clicked = data.get('buttonClicked')
-    if button_clicked == ""
-    print(f'Input Text: {input_text}, Button Clicked: {button_clicked}')
-    return jsonify({'input': input_text, 'buttonClicked': button_clicked})
+    seed_id = input_text.split('/')[-1]
+    if button_clicked == "GenreFiltering":
+        print("genre filtering if")
+        print(f'Input Text: {seed_id}, Button Clicked: {button_clicked}')
+        return jsonify({'input': input_text, 'buttonClicked': button_clicked})
+    elif button_clicked == "CombinedAlgo":
+        print("genre filtering if")
+        print(f'Input Text: {seed_id}, Button Clicked: {button_clicked}')
+        return jsonify({'input': input_text, 'buttonClicked': button_clicked})
+    
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
