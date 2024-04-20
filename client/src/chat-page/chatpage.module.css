@@ -1,76 +1,109 @@
-
-
-.chatPageContainer{
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    width: 100%;
-    background-color: #303030;
-}
-
-.chatBoxContainer{
+/* Headline Section */
+.HeadlineSection {
     display: flex;
     flex-direction: column;
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    background-color: #212121;
-
-}
-
-.chatHistory{
-    background-color: #171717;
-    color: white;
-    height: 100%;
-    width: 20%;   
-}
-
-.ChatHeadline{
-    display:flex;
     align-items: center;
     justify-content: center;
-    background-color: #171717;
-}
-
-.title{
-    display: flex;
-    align-items: center;
-    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .ChatHeadline {
     color: white;
-    font-weight: lighter;
-    font-family: newsreader;
-    background-color: #212121;
-}
-
-.Headline {
-    display:flex;
-    margin-top: 5%;
+    font-size: 2.5em;
+  }
+  
+  .HeadlineDescription {
+    color: white;
+    font-family: inter;
+    font-size: 1.4em;
+    font-weight: normal;
+  }
+  
+  /* Option Section */
+  .HeaderOptions {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
-}
-
-.chatContainer{
-    margin: auto;
-    display: flex;
-    align-items: column;
-    border-color: white;
-    background-color: #333333;
-    width: 70%;
-    height:60%;
-}
-
-.userInput{
-    display: flex;
-    flex-direction: row;   
-    background-color: white;
-    width: 100%;
-    height: 10%;
+    margin-top:550px;
+    margin-bottom:20px;
+  }
+  
+  .OptionHeadline {
+    color: white;
+    font-family: inter;
+    font-size: 22px;
+    font-weight:light;
+    margin-bottom: 20px;
+  }
+  
+  .Features {
+    border: 2px solid black;
     border-radius: 10px;
-}
-
-::placeholder{
-    color: #1ED760;
-    font-weight: bold;
-    padding-left: 3%;
-}
+    padding: 1px;
+    background-color: #0d1e35;
+    margin-bottom: 70px;
+    font-size:18px;
+  }
+  
+  .Features > button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: inter;
+    font-size: 1.1em;
+    margin: 5px;
+    cursor: pointer;
+    padding: 3px;
+  }
+  
+  .Features .FeatureAlgos:active,
+  .Features .FeatureAlgos:focus {
+    padding: 4px;
+    border-radius: 5px;
+    background: linear-gradient(#005366, #00a6cc);
+  }
+  
+  .Features .CombinedAlgo:active,
+  .Features .CombinedAlgo:focus {
+    padding: 4px;
+    border-radius: 5px;
+    background: linear-gradient(#163f83, #2870e9);
+  }
+  
+  /* Active Button Style */
+  .Active {
+    padding: 4px;
+    border-radius: 5px;
+    background: linear-gradient(#163f83, #2870e9);
+  }
+  
+  /* Input Section */
+  .InputSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    
+  }
+  
+  .InputSection > input {
+    background-color: #0d1e35;
+    color: white;
+    width: 40%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding: 8px;
+    font-size: 1.2em;
+    font-family: inter;
+    
+  }
+  
+  .InputSection > input::placeholder {
+    color: white;
+  }
