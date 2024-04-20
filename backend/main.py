@@ -1,24 +1,17 @@
-from flask import Flask
-#from flask_migrate import Migrate
-#from flask_marshmallow import Marshmallow
-#from flask_cors import CORS
-
-from audio_filter import *
-from genre_extract import *
-
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
-audio_output = find_similar_tracks('5JEx7HbmvHQQswJCsoo9rA')
-genre_output = recommend_songs_by_genres()
-
-@app.route('/audio')
-def audio():
-    return audio_output
-
-@app.route('/genre')
-def genre():
-    return genre_output
+@app.route('/submit', methods=['POST'])
+def submit():
+    data = request.json
+    input_text = data.get('input')
+    button_clicked = data.get('buttonClicked')
+    if button_clicked == ""
+    print(f'Input Text: {input_text}, Button Clicked: {button_clicked}')
+    return jsonify({'input': input_text, 'buttonClicked': button_clicked})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=5000, debug=True)

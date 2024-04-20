@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './chatpage.module.css';
 
 function ChatPage() {
@@ -24,11 +25,17 @@ function ChatPage() {
     setInputValue(event.target.value);
   };
 
-  const handleSubmit = () => {
-    // Handle submission logic here, such as sending the input value to a backend or performing some action
-    console.log(`Clicked ${activeButton} and submitted input: ${inputValue}`);
-    // Clear the input field after submission
-    setInputValue('');
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/submit', {  // Send request to port 5000
+        input: inputValue,
+        buttonClicked: activeButton
+      });
+      console.log(response.data);
+      setInputValue('');
+    } catch (error) {
+      console.error('Error submitting data:', error);
+    }
   };
 
   const handleKeyPress = (event) => {
@@ -64,12 +71,14 @@ function ChatPage() {
         </div>
         <div className={styles.InputSection}>
           <input
-            type="text"
+            type="url"
             placeholder="Input your song name"
             value={inputValue}
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
+            required
           />
+          <button onClick={handleSubmit}>Submit</button>
         </div>
       </section>
     </>
