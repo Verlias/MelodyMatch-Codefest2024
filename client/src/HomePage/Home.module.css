@@ -5,9 +5,24 @@
 }
 
 body {
-    overflow-y: hidden;
     background-color: #060E19;
 }
+
+/* Hide the vertical scrollbar */
+::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Optional: Customizing scrollbar track color */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Optional: Customizing scrollbar thumb color */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
 
 .HomeContainer {
     color: white;
