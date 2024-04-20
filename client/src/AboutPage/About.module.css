@@ -1,61 +1,78 @@
-.AboutSection{
-    width:1500px;
-    margin:auto;
-    margin-top:75px;
-    display:flex;
+.AboutSection {
+    width: 1500px;
+    margin: auto;
+    margin-top: 75px;
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    color:white;
+    color: white;
+    position: relative; 
+}
+
+.AboutHeadLine {
+    font-size: 45px;
+    font-family: Newsreader;
+}
+
+.LineBreak {
+    border: 1px solid #E6E6E6;
+    width: 100%;
+}
+
+.AboutContent {
+    margin-top: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 15px;
+    font-size: 22px;
+    font-family: inter;
+}
+
+.AboutP {
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    padding: 10px 0px 10px 0px;
+}
+
+.GitHubLink {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+}
+
+.GitHubLink > a {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 0, 0);
+}
+
+.GitHubLink > a > svg {
+    background-color: #060E19;
+    color: white;
+}
+
+.ScikitLogo {
+    background-color: rgba(0, 0, 0, 0);
+    width: 500px;
+    margin-right: auto;
+    color: rgba(0, 0, 0, 0);
+    right: 400;
+}
+
+.ParticlesContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+@keyframes cursor {
+    50% {border-color: transparent}
     
 }
 
-.AboutHeadLine{
-    font-size:45px;
-    font-family:Newsreader;
-}
-
-.LineBreak{
-    border:1px solid #E6E6E6;
-    width:100%;
-}
-
-
-.AboutContent{
-    margin-top:10px;
-    border:2px solid black;
-    border-radius: 10px;
-    background-color:#1ED760;
-    padding:15px;
-    font-size:22px;
-    font-family:inter;
-}
-
-.AboutP{
-    background-color:#1ED760;
-    color:black;
-    padding:10px 0px 10px 0px; 
-}
-
-.GitHubLink{
-    background-color:#1ED760;
-    color:#1ED760;
-}
-
-
-.GitHubLink > a{
-    background-color:#1ED760;
-    color:#1ED760;
-}
-
-.GitHubLink > a > svg{
-    background-color:#1ED760;
-    color:#1ED760;
-}
-
-
-.ScikitLogo{
-    background-color:#1ED760;
-    width:500px;
-    margin-right:auto;
-    color: #1ED760;
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
 }
