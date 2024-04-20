@@ -4,6 +4,8 @@ import Home from './HomePage/Home';
 import About from './AboutPage/About';
 import ChatPage from './chat-page/chat-page';
 import ParticlesComponent from "./components/particles";
+import Profile from './ProfilePage/Profile'
+
 
 function App() {
   return (
