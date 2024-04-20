@@ -1,7 +1,7 @@
 from flask import Flask
-from flask_migrate import Migrate
+#from flask_migrate import Migrate
 #from flask_marshmallow import Marshmallow
-from flask_cors import CORS
+#from flask_cors import CORS
 
 from audio_filter import *
 from genre_extract import *
