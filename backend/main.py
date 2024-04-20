@@ -10,7 +10,7 @@ from genre_extract import *
 app = Flask(__name__)
 
 audio_output = find_similar_tracks('5JEx7HbmvHQQswJCsoo9rA')
-genre_output = recommend_user_songs()
+genre_output = recommend_songs_by_genres()
 
 @app.route('/audio')
 def audio():
