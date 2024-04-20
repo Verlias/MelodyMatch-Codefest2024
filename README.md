@@ -9,6 +9,11 @@
 
 <code> npm install axios </code>
 
+<code>npm install @tsparticles/react </code>
+
+<code>npm install @tsparticles/all </code>
+
+
 ## Dependencies for Flask Backend
 ```
 pip3 install flask

@@ -23,7 +23,7 @@ function Home(){
                 <h1 className={styles.HomeHeadline}>Discover Your Perfect Tune with MelodyMatch: Your Personalized Music Recommendation Platform!</h1>
                 <Link to="/Chatbot" className={styles.button}>Get Started</Link>
             </div>
-            <canvas id="canvas" style={{ position: "absolute", left: 0, top: 0, zIndex: -1 }}></canvas>
+            <canvas id="canvas" style={{ position: "absolute", left: 0, top: 0, zIndex: -9999 }}></canvas>
         </>
     )
 };
