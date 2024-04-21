@@ -19,14 +19,12 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 
 def get_user_top_artists():
     top_artist = sp.current_user_top_artists(limit=10, offset=0, time_range='short_term')
-    return top_artist['items'][0]['name']
+    return top_artist['items'][0]['id']
 
 def search_artist_top_tracks():
-    artist_name = get_user_top_artists()
-    results = sp.search(q=artist_name, limit=1)
-    artist_id = results['artists']['items'][0]['id']
-    top_tracks = sp.artist_top_tracks(artist_id)
-    return top_tracks
+    artist_id = get_user_top_artists()
+    artist_top_track = sp.artist_top_tracks(artist_id, country='US')['tracks'][0]['id']
+    return artist_top_track
 
 def get_audio_features(track_id):
     audio_features = sp.audio_features(track_id)
@@ -58,7 +56,11 @@ def find_similar_tracks(seed_track_id, num_tracks=50, k=10):
     return similar_tracks
 
 def main():
-    print("Your top artist is: ", get_user_top_artists())
+    seed_track_id = search_artist_top_tracks()
+    similar_tracks = find_similar_tracks(seed_track_id)
+    print("Similar tracks:")
+    for track_name, track_id in similar_tracks:
+        print(f"{track_name} - Track ID: {track_id}")
     
 
 if __name__ == "__main__":
