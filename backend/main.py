@@ -9,7 +9,9 @@ def submit():
     data = request.json
     input_text = data.get('input')
     button_clicked = data.get('buttonClicked')
-    seed_id = input_text.split('/')[-1]
+    sliced_slash = input_text.split('/')[-1]
+    sliced_question = sliced_slash.split('?')[0]
+    seed_id = sliced_question
     if button_clicked == "GenreFiltering":
         print("genre filtering if")
         print(f'Input Text: {seed_id}, Button Clicked: {button_clicked}')
