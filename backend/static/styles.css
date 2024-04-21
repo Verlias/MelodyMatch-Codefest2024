@@ -1,0 +1,122 @@
+/* Headline Section */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #060E19;
+}
+.HeadlineSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .ChatHeadline {
+    color: white;
+    font-size: 2.5em;
+  }
+  
+  .HeadlineDescription {
+    color: white;
+    font-family: inter;
+    font-size: 1.4em;
+    font-weight: normal;
+  }
+  
+  /* Option Section */
+  .HeaderOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top:450px;
+    margin-bottom:20px;
+  }
+  
+  .OptionHeadline {
+    color: white;
+    font-family: inter;
+    font-size: 22px;
+    font-weight:light;
+    margin-bottom: 20px;
+  }
+  
+  .Features {
+    border-radius: 10px;
+    padding: 1px;
+    background-color: #0d1e35;
+    margin-bottom: 70px;
+    font-size:18px;
+  }
+  
+  .Features > button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: inter;
+    font-size: 1.1em;
+    margin: 5px;
+    cursor: pointer;
+    padding: 3px;
+    text-shadow: -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+}
+
+  
+  .Features .FeatureAlgos:active,
+  .Features .FeatureAlgos:focus {
+    padding: 4px;
+    border-radius: 5px;
+    background: linear-gradient(#005366, #00a6cc);
+  }
+  
+  .Features .CombinedAlgo:active,
+  .Features .CombinedAlgo:focus {
+    padding: 4px;
+    border-radius: 5px;
+    background: linear-gradient(#163f83, #2870e9);
+  }
+  
+  /* Active Button Style */
+  .Active {
+    padding: 4px;
+    border-radius: 5px;
+    background: linear-gradient(#163f83, #2870e9);
+  }
+  
+  /* Input Section */
+  .InputSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    
+  }
+  
+  .InputSection > input {
+    background-color: #0d1e35;
+    color: white;
+    width: 40%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    padding: 8px;
+    font-size: 1.2em;
+    font-family: inter;
+    
+  }
+  
+  .InputSection > input::placeholder {
+    color: white;
+  }

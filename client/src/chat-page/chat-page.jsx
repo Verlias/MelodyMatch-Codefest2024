@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import styles from './chatpage.module.css';
+import Result from '../Result-Page/Result';
 
 function ChatPage() {
 
-  const navigate = useNavigate(); // Initialize navigate function
-
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = "src/scripts/notescript.js";
-        script.async = true;
-        document.body.appendChild(script);
-        return () => {
-            document.body.removeChild(script);
-        };
-    }, []);
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "src/scripts/notescript.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const [activeButton, setActiveButton] = useState('CombinedAlgo');
   const [inputValue, setInputValue] = useState('');
+  const [showResult, setShowResult] = useState(false);
 
   const handleButtonClick = (buttonName) => {
     setActiveButton(buttonName);
@@ -29,19 +28,8 @@ function ChatPage() {
     setInputValue(event.target.value);
   };
 
-  const handleSubmit = async () => {
-    try {
-      const response = await axios.post('http://localhost:5000/submit', {  // Send request to port 5000
-        input: inputValue,
-        buttonClicked: activeButton
-      });
-      console.log(response.data);
-      setInputValue('');
-
-      navigate('/result')
-    } catch (error) {
-      console.error('Error submitting data:', error);
-    }
+  const handleSubmit = () => {
+    setShowResult(true);
   };
 
   const handleKeyPress = (event) => {
@@ -73,7 +61,7 @@ function ChatPage() {
             >
               Balanced
             </button>
-          </div>
+          </div>  
         </div>
         <div className={styles.InputSection}>
           <input
@@ -85,6 +73,7 @@ function ChatPage() {
             required
           />
           <button onClick={handleSubmit}>Submit</button>
+          {showResult && <Result inputData={inputValue} buttonClicked={activeButton} />}
         </div>
       </section>
     </>
