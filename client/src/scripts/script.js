@@ -181,8 +181,8 @@ function draw() {
     // Draw the cursor point
     var mousePos = getMousePos(canvas, { clientX: mouseX, clientY: mouseY });
     // Sets the mouse y
-    if (mousePos.y < topbound) {
-        mousePos.y = topbound;
+    if (mousePos.y < (slope/numPoints) * (canvas.width-mousePos.x) + topbound) {
+        mousePos.y = (slope/numPoints) * (canvas.width-mousePos.x) + topbound;
     }
     else if (mousePos.y > bottombound) {
         mousePos.y = bottombound;
