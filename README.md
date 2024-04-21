@@ -1,4 +1,4 @@
-# MusicRecommendationGPT
+# MelodyMatch
 
 ## Dependencies for React Frontend
 <code> cd client </code>
@@ -20,6 +20,10 @@ pip3 install flask
 ```
 ```
 pip install flask
+pip install sklearn
+pip install dotenv
+pip install spotipy
+pip install flask-cors
 ```
 
 ## To Run Backend
@@ -28,4 +32,6 @@ cd backend
 ```
 ```
 python3 {whichever file needs to be ran}
+
+python main.py
 ```
