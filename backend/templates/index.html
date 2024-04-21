@@ -17,7 +17,7 @@
         <div class="HeaderOptions">
             <p class="OptionHeadline">Choose your groove style</p>
             <div class="Features">
-                <button class="FeatureAlgos" id="GenreFiltering">Audio Filtering</button>
+                    <button class="FeatureAlgos" id="GenreFiltering">Audio Filtering</button>
                 <button class="CombinedAlgo" id="CombinedAlgo">Genre & Audio Filtering</button>
             </div>
         </div>
@@ -29,9 +29,9 @@
             <!-- Submit button for Genre Filtering -->
         </div>
         <!-- Button to call the /similar_tracks route -->
-        <button id="getSimilarTracksButton">Get Similar Tracks</button>
+        <button id="getSimilarTracksButton">Get Personalized Tracks</button>
         <!-- Button to call the /audio_tracks route -->
-        <button id="getAudioTracksButton">Get Audio Tracks</button>
+        <button id="getAudioTracksButton">Get Audio filtered Tracks</button>
     </section>
 
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>

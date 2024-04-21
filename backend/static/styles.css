@@ -101,7 +101,7 @@ body {
     align-items: center;
     justify-content: center;
     margin:auto;
-    margin-top: 20px;
+    margin-top: 15px;
     margin-bottom: 20px;
     width: 100%; /* Set width to 100% */
     max-width: 400px; /* Set max-width */
@@ -132,6 +132,8 @@ body {
     justify-content: center;
     margin:auto;
     color: white;
+    height:40%;
+    font-size:21.5px;
 }
 
 #getSimilarTracksButton{
@@ -139,6 +141,10 @@ body {
     align-items: center;
     justify-content: center;
     margin:auto;
+    margin-bottom:15px;
+    background: linear-gradient(#163f83, #2870e9);
+    border-radius:5px;
+    color:white;
 }
 
 #getAudioTracksButton{
@@ -146,4 +152,8 @@ body {
     align-items: center;
     justify-content: center;
     margin:auto;
+    background: linear-gradient(#163f83, #2870e9);
+    border-radius:5px;
+    color:white;
+
 }

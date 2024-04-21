@@ -13,6 +13,29 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+
+    // Function to handle button clicks
+    // Function to handle button clicks
+function handleButtonClick(buttonId) {
+    document.getElementById("buttonClicked").value = buttonId;
+    // Hide/show input and buttons based on button clicked
+    if (buttonId === "GenreFiltering") {
+        document.getElementById("inputSection").style.display = "block";
+        document.getElementById("getSimilarTracksButton").style.display = "none";
+        document.getElementById("getAudioTracksButton").style.display = "block";
+        document.getElementById("submitForm").innerText = "Submit";
+    } else if (buttonId === "CombinedAlgo") {
+        document.getElementById("inputSection").style.display = "none";
+        document.getElementById("getSimilarTracksButton").style.display = "block";
+        document.getElementById("getAudioTracksButton").style.display = "none";
+        document.getElementById("submitForm").innerText = "Submit";
+    } else {
+        document.getElementById("inputSection").style.display = "none";
+        document.getElementById("getSimilarTracksButton").style.display = "none";
+        document.getElementById("getAudioTracksButton").style.display = "block";
+    }
+}
+
     // Add event listeners to the buttons
     document.getElementById("GenreFiltering").addEventListener("click", function() {
         handleButtonClick("GenreFiltering");
