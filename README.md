@@ -10,7 +10,7 @@ Introducing Melody Matcher, your ultimate companion for discovering music that s
 
 ## Tech Stack
 
-[![My Skills](https://skillicons.dev/icons?i=React,js,flask,python,sckitlearn)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,js,flask,python,)](https://skillicons.dev)
 
 ## Dependencies for React Frontend
 <code> cd client </code>
