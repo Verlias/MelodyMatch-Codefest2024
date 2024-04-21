@@ -11,44 +11,22 @@ load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 REDIRECT_URI = "http://localhost:5000/callback"
-SCOPE = 'playlist-read-private user-read-private'
+SCOPE = 'playlist-read-private user-read-private user-top-read'
 CACHE = '.spotipyoauthcache'
 
 auth_manager = SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI, scope=SCOPE, cache_path=CACHE)
 sp = spotipy.Spotify(auth_manager=auth_manager)
 
-def extract_genres(track_id):
-    track_info = sp.track(track_id)
-    artist_id = track_info['artists'][0]['id']
-    artist_info = sp.artist(artist_id)
-    return artist_info['genres']
+def get_user_top_artists():
+    top_artist = sp.current_user_top_artists(limit=10, offset=0, time_range='short_term')
+    return top_artist['items'][0]['name']
 
-def user_playlist_genres():
-    followed_playlist = sp.current_user_playlists(limit=10, offset=0)
-    playlist_IDs = []
-    playlist_track_ids = []
-    genre_list = []
-    
-    for item in followed_playlist['items']:
-        playlist_IDs.append(item['id'])
-    
-    for id in playlist_IDs:
-        playlist_tracks = sp.playlist_tracks(id, market=None, fields='items.track.id', limit=5, offset=0)
-        for track_info in playlist_tracks.get('items', []):
-            if 'track' in track_info and 'id' in track_info['track']:
-                playlist_track_ids.append(track_info['track']['id'])
-    
-    for track_id in playlist_track_ids:
-        genres = extract_genres(track_id)
-        genre_list = genre_list + genres
-    
-    counter = Counter(genre_list)
-    return counter.most_common(1)[0][0]
-
-def search_top_genre():
-    genre = user_playlist_genres()
-    search = sp.search(q=str(genre),offset=0,limit=1,type='track')
-    return search['tracks']['items'][0]['id']
+def search_artist_top_tracks():
+    artist_name = get_user_top_artists()
+    results = sp.search(q=artist_name, limit=1)
+    artist_id = results['artists']['items'][0]['id']
+    top_tracks = sp.artist_top_tracks(artist_id)
+    return top_tracks
 
 def get_audio_features(track_id):
     audio_features = sp.audio_features(track_id)
@@ -80,11 +58,8 @@ def find_similar_tracks(seed_track_id, num_tracks=50, k=10):
     return similar_tracks
 
 def main():
-    seed_track_id = search_top_genre()
-    similar_tracks = find_similar_tracks(seed_track_id)
-    print("Similar tracks:")
-    for track_name, track_id in similar_tracks:
-        print(f"{track_name} - Track ID: {track_id}")
+    print("Your top artist is: ", get_user_top_artists())
+    
 
 if __name__ == "__main__":
     main()
