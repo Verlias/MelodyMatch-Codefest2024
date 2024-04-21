@@ -4,85 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Web Page</title>
+    <title>Melody Match</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Welcome to Simple Web Page</h1>
-    <form id="submitForm">
-        <label for="inputText">Input Text:</label>
-        <input type="text" id="inputText" name="inputText">
-        <br>
-        <label for="buttonClicked">Button Clicked:</label>
-        <input type="text" id="buttonClicked" name="buttonClicked">
-        <br>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="resultContainer"></div>
+    <section class="ChatbotSection">
+        <div class="HeadlineSection">
+            <h1 class="ChatHeadline">Melody Match</h1>
+            <h3 class="HeadlineDescription">Your everyday AI music recommender system</h3>
+        </div>
+        <div id="resultContainer"></div>
+        <div class="HeaderOptions">
+            <p class="OptionHeadline">Choose your groove style</p>
+            <div class="Features">
+                <button class="FeatureAlgos" id="GenreFiltering">Audio Filtering</button>
+                <button class="CombinedAlgo" id="CombinedAlgo">Genre & Audio Filtering</button>
+            </div>
+        </div>
+        <div class="InputSection" id="inputSection">
+            <!-- Text input for Genre Filtering -->
+            <input type="url" placeholder="Input your song name" id="inputText" name="inputText" required>
+            <!-- Hidden input for Button Clicked -->
+            <input class="InputSection" type="hidden" id="buttonClicked" name="buttonClicked">
+            <!-- Submit button for Genre Filtering -->
+        </div>
+        <!-- Button to call the /similar_tracks route -->
+        <button id="getSimilarTracksButton">Get Similar Tracks</button>
+        <!-- Button to call the /audio_tracks route -->
+        <button id="getAudioTracksButton">Get Audio Tracks</button>
+    </section>
 
-    <!-- Button to call the /similar_tracks route -->
-    <button id="getSimilarTracksButton">Get Similar Tracks</button>
-
-    <!-- Button to call the /audio_tracks route -->
-    <button id="getAudioTracksButton">Get Audio Tracks</button>
-
-    <script>
-        document.getElementById("submitForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            const inputText = document.getElementById("inputText").value;
-            const buttonClicked = document.getElementById("buttonClicked").value;
-            
-            try {
-                const response = await fetch("/submit", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        input: inputText,
-                        buttonClicked: buttonClicked
-                    })
-                });
-                const data = await response.json();
-                document.getElementById("resultContainer").innerText = JSON.stringify(data);
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        });
-
-        // Function to call the /similar_tracks route when the "Get Similar Tracks" button is clicked
-        document.getElementById("getSimilarTracksButton").addEventListener("click", async function() {
-            try {
-                const response = await fetch("/similar_tracks", {
-                    method: "GET"
-                });
-                const data = await response.json();
-                const similarTracksHtml = data.similarTracks.map(track => `<p>${track[0]} - Track ID: ${track[1]}</p>`).join('');
-                document.getElementById("resultContainer").innerHTML = similarTracksHtml;
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        });
-
-        // Function to call the /audio_tracks route when the "Get Audio Tracks" button is clicked
-        document.getElementById("getAudioTracksButton").addEventListener("click", async function() {
-            try {
-                const response = await fetch("/audio_tracks", {
-                    method: "POST", // Change to POST since it sends data
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        input: document.getElementById("inputText").value,
-                        buttonClicked: document.getElementById("buttonClicked").value
-                    })
-                });
-                const data = await response.json();
-                const audioTracksHtml = data.similarTracks.map(track => `<p>${track[0]} - Track ID: ${track[1]}</p>`).join('');
-                document.getElementById("resultContainer").innerHTML = audioTracksHtml;
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        });
-    </script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
