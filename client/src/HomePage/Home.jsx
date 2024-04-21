@@ -21,7 +21,7 @@ function Home(){
             <NavBar />
             <div className={styles.HomeContainer}>
                 <h1 className={styles.HomeHeadline}>Discover Your Perfect Tune with MelodyMatch: Your Personalized Music Recommendation Platform!</h1>
-                <Link to="/Chatbot" className={styles.button}>Get Started</Link>
+                <button className={styles.button} onClick={() => window.location.href = 'http://127.0.0.1:5000/'}>Go to URL</button>
             </div>
             <canvas id="canvas" style={{ position: "absolute", left: 0, top: 0, zIndex: -9999 }}></canvas>
         </>
