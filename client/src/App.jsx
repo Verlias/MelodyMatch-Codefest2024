@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './HomePage/Home';
 import About from './AboutPage/About';
 import ChatPage from './chat-page/chat-page';
+import Result from './Result-Page/Result.jsx'
 import ParticlesComponent from "./components/particles";
-import Profile from './ProfilePage/Profile'
+
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           }
         />
         <Route path="/Chatbot" element={<ChatPage />} />
+        <Route path="/Result" element={<Result />}/>
       </Routes>
     </Router>
   );

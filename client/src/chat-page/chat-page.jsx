@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styles from './chatpage.module.css';
 
 function ChatPage() {
+
+  const navigate = useNavigate(); // Initialize navigate function
+
     useEffect(() => {
         const script = document.createElement('script');
         script.src = "src/scripts/notescript.js";
@@ -33,6 +37,8 @@ function ChatPage() {
       });
       console.log(response.data);
       setInputValue('');
+
+      navigate('/result')
     } catch (error) {
       console.error('Error submitting data:', error);
     }

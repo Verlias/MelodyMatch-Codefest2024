@@ -15,9 +15,6 @@ function NavBar(){
                         <Link className={styles.Links} to="/About">Who we Are</Link>
                     </li>
                     <li>
-                        <Link className={styles.Links} to="/Profile">My Profile</Link>
-                    </li>
-                    <li>
                         <Link className={styles.LoginLink} to="/Login">Login/Register</Link>
                     </li>
                 </ul>
